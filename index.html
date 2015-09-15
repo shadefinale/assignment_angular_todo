@@ -15,8 +15,7 @@
       <button ng-click="clearCompleted()">Clear Completed Tasks</button>
     </div>
     <table>
-      <tr todo-item ng-repeat="(index, item) in items | filterCompleted: !showCompleted" item='item' index='index'>
-      </tr>
+      <tr todo-item ng-repeat="item in items | filterCompleted: !showCompleted"></tr>
     </table>
   </div>
 
@@ -30,7 +29,11 @@
   <!-- directives -->
   <script src="js/directives/todoItem.js"></script>
 
+  <!-- services -->
+  <script src="js/services/todoService.js"></script>
+
   <!-- controllers -->
   <script src="js/controllers/todoController.js"></script>
+
 </body>
 </html>
