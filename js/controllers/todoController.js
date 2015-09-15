@@ -5,7 +5,11 @@ app.controller("TodoCtrl", ['$window', '$scope', function($window, $scope){
 
   $scope.toggleCompletedText = function(){
     return $scope.showCompleted ? 'Hide Completed' : 'Show Completed';
-  }
+  };
+
+  $scope.toggleCompleted = function(){
+    $scope.showCompleted = !$scope.showCompleted;
+  };
 
   $scope.items = [{ text: "Get groceries from the store",
                   dueDate: new Date(),
@@ -21,22 +25,22 @@ app.controller("TodoCtrl", ['$window', '$scope', function($window, $scope){
                   completed: false },
                   { text: "Get groceries from the store5",
                   dueDate: new Date(),
-                  completed: false }]
+                  completed: false }];
   $scope.pushNewTask = function(){
     $scope.items.push({text: $scope.newTask,
                        dueDate: new Date($scope.newDueDate),
                        completed: false });
     $scope.newTask = "";
     $scope.newDueDate = "";
-  }
+  };
 
   $scope.destroyItem = function(idx){
     $scope.items.splice(idx, 1);
-  }
+  };
 
   $scope.clearCompleted = function(){
     $scope.items = $scope.items.filter(function(task){
       return !task.completed;
-    })
-  }
+    });
+  };
 }]);
