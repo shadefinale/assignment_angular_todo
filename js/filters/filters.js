@@ -41,3 +41,42 @@ app.filter('completedOnBottom', function(){
   };
 
 });
+
+app.filter('dueDateAsc', function(){
+  return function(collection){
+    return collection.sort(function(a, b){
+      return b.dueDate - a.dueDate;
+    })
+  }
+})
+
+app.filter('dueDateDesc', function(){
+  return function(collection){
+    return collection.sort(function(a, b){
+      return a.dueDate - b.dueDate;
+    })
+  }
+})
+
+app.filter('filterByCriteria', function(completedOnTopFilter, completedOnBottomFilter, dueDateDescFilter, dueDateAscFilter){
+  return function(collection, criteria){
+    switch(criteria){
+      case 'completedOnTop':
+        return completedOnTopFilter(collection);
+        break;
+      case 'completedOnBottom':
+        return completedOnBottomFilter(collection);
+        break;
+      case 'dueDateDesc':
+        return dueDateDescFilter(collection);
+        break;
+      case 'dueDateAsc' :
+        return dueDateAscFilter(collection);
+        break;
+      default :
+        return collection;
+        break;
+    }
+  }
+});
+

@@ -9,10 +9,12 @@
 
   <div ng-controller="TodoCtrl">
     <select ng-model='orderFilter'>
+      <option value="">No Sorting</option>
       <option value="completedOnTop">Completed On Top</option>
       <option value="completedOnBottom">Completed On Bottom</option>
-      <option value="completedOnTop">Due Date Descending</option>
-  </select>
+      <option value="dueDateDesc">Due Date Descending</option>
+      <option value="dueDateAsc">Due Date Ascending</option>
+    </select>
 
  {{orderFilter}}
 
@@ -26,7 +28,7 @@
       <button ng-click="clearCompleted()">Clear Completed Tasks</button>
     </div>
     <table>
-      <tr todo-item ng-repeat="item in items | filterCompleted: !showCompleted | orderFilter in currentFilter()"></tr>
+      <tr todo-item ng-repeat="item in items | filterCompleted: !showCompleted | filterByCriteria:orderFilter"></tr>
     </table>
   </div>
 

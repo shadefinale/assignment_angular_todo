@@ -9,12 +9,12 @@ app.factory('todoService', function(){
                   completed: false },
                   { text: "Get groceries from the store3",
                   dueDate: new Date(),
-                  completed: false },
+                  completed: true },
                   { text: "Get groceries from the store4",
-                  dueDate: new Date(),
+                  dueDate: new Date('9-13-2015'),
                   completed: false },
                   { text: "Get groceries from the store5",
-                  dueDate: new Date(),
+                  dueDate: new Date('9-14-2015'),
                   completed: false }];
 
   obj.getItems = function(){

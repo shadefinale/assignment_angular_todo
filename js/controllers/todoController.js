@@ -5,10 +5,6 @@ app.controller("TodoCtrl", ['$window', '$scope', 'todoService', '$filter', funct
   $scope.items = todoService.getItems();
   $scope.orderFilter = '';
 
-  $scope.currentFilter = function(){
-    return $filter($scope.orderFilter);
-  };
-
   $scope.toggleCompletedText = function(){
     return $scope.showCompleted ? 'Hide Completed' : 'Show Completed';
   };
