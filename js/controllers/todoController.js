@@ -1,8 +1,13 @@
-app.controller("TodoCtrl", ['$window', '$scope', 'todoService', function($window, $scope, todoService){
+app.controller("TodoCtrl", ['$window', '$scope', 'todoService', '$filter', function($window, $scope, todoService, $filter){
   $scope.newTask = "";
   $scope.newDueDate = "";
   $scope.showCompleted = true;
   $scope.items = todoService.getItems();
+  $scope.orderFilter = '';
+
+  $scope.currentFilter = function(){
+    return $filter($scope.orderFilter);
+  };
 
   $scope.toggleCompletedText = function(){
     return $scope.showCompleted ? 'Hide Completed' : 'Show Completed';
@@ -24,9 +29,10 @@ app.controller("TodoCtrl", ['$window', '$scope', 'todoService', function($window
 
   $scope.clearCompleted = function(){
     todoService.clearCompleted();
-  }
+  };
 
   $scope.destroyItem = function(idx){
     todoService.destroyItem(idx);
-  }
+  };
+
 }]);

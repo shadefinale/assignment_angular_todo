@@ -6,7 +6,18 @@
   <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js'></script>
 </head>
 <body ng-app="app">
+
   <div ng-controller="TodoCtrl">
+    <select ng-model='orderFilter'>
+      <option value="completedOnTop">Completed On Top</option>
+      <option value="completedOnBottom">Completed On Bottom</option>
+      <option value="completedOnTop">Due Date Descending</option>
+  </select>
+
+ {{orderFilter}}
+
+
+
     <div class="newtodo">
       <input ng-model="newTask"></input>
       <input ng-model="newDueDate"></input>
@@ -15,7 +26,7 @@
       <button ng-click="clearCompleted()">Clear Completed Tasks</button>
     </div>
     <table>
-      <tr todo-item ng-repeat="item in items | filterCompleted: !showCompleted"></tr>
+      <tr todo-item ng-repeat="item in items | filterCompleted: !showCompleted | orderFilter in currentFilter()"></tr>
     </table>
   </div>
 
